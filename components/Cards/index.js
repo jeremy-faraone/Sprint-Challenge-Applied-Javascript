@@ -52,19 +52,19 @@ axios.get("https://lambda-times-backend.herokuapp.com/articles")
     //         console.log('Array of Articles', response.data.articles)
     //     })
     .then(response => {
-        response.data.articles['bootstrap'].forEach(data =>{
-            articleCard.appendChild(articleMaker(data))
+        response.data.articles['bootstrap'].forEach(artData =>{
+            articleCard.appendChild(articleMaker(artData))
         });
-        response.data.articles['javascript'].forEach(data =>{
-            articleCard.appendChild(articleMaker(data))
+        response.data.articles['javascript'].forEach(artData =>{
+            articleCard.appendChild(articleMaker(artData))
         });
-        response.data.articles['jquery'].forEach(data =>{
-            articleCard.appendChild(articleMaker(data))
+        response.data.articles['jquery'].forEach(artData =>{
+            articleCard.appendChild(articleMaker(artData))
         });
-        response.data.articles['node'].forEach(data =>{
-            articleCard.appendChild(articleMaker(data))
+        response.data.articles['node'].forEach(artData =>{
+            articleCard.appendChild(articleMaker(artData))
         });
-        response.data.articles['technology'].forEach(data =>{
-            articleCard.appendChild(articleMaker(data))
+        response.data.articles['technology'].forEach(artData =>{
+            articleCard.appendChild(articleMaker(artData))
         })
     });
