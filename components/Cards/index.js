@@ -18,58 +18,53 @@
 // </div>
 //
 // Use your function to create a card for each of the articles and add the card to the DOM.
-const articleMaker = (art) => {
-    const card = document.createElement('div')
-    const head = document.createElement('div')
-    const auth = document.createElement('div')
-    const divImage = document.createElement('div')
-    const image = document.createElement('img')
-    const authName = document.createElement('span')
 
-    card.appendChild(head)
-    card.appendChild(auth)
-    auth.appendChild(divImage)
-    divImage.appendChild(image)
-    auth.appendChild(authName)
+function articleMaker(artData) {
+    const card = document.createElement("div")
+    const head = document.createElement("div")
+    const author = document.createElement("div")
+    const imgBox = document.createElement("div")
+    const image = document.createElement("img")
+    const name = document.createElement("span");
 
-    card.classList.add('card')
-    head.classList.add('headline')
-    auth.classList.add('author')
-    divImage.classList.add('img-container')
+    card.appendChild(head);
+    card.appendChild(author);
+    author.appendChild(imgBox);
+    imgBox.appendChild(image);
+    author.appendChild(name);
 
-    head.textContent = object.headline
-    divImage.src = object.authorImage
-    authName = object.authorName
+    card.classList.add("card");
+    head.classList.add("headline");
+    author.classList.add("author");
+    imgBox.classList.add("img-container");
 
-    return card
+    head.textContent = artData.headline;
+    image.src = artData.authorPhoto;
+    name.textContent = artData.authorName;
+
+    return card;
 }
-const entryPoint2 = document.querySelector('.cards-container')
+
+let articleCard = document.querySelector(".cards-container");
 
 axios.get("https://lambda-times-backend.herokuapp.com/articles")
+    // .then(response => {
+    //         console.log('Array of Articles', response.data.articles)
+    //     })
     .then(response => {
-        console.log('Array of Articles', response.data.articles)
-           
-        // const boot = response.data.articles.bootstrap
-        // const java = response.data.articles.javascript
-        // const tech = response.data.articles.technology
-        // const jquery = response.data.articles.jquery
-        // const node = response.data.articles.node
-
-        response.data.articles.bootstrap.forEach(element => {
-    const bootStrap = articleMaker(element)
-    entryPoint2.appendChild(bootStrapS)
-});
-
-        // // response.data.articles.forEach((article) => {
-        // //     const newArtCard = articleMaker(article)
-        // //     entryPoint2.appendChild(newArtCard)
-        // // })
-        // // console.log(node)
-        console.log(topics)
-    })
-    .catch(err => {
-        console.log('Uh oh')
-    })
-    .then(() => {
-        console.log('ok')
-    })
+        response.data.articles['bootstrap'].forEach(data =>{
+            articleCard.appendChild(articleMaker(data))
+        });
+        response.data.articles['javascript'].forEach(data =>{
+            articleCard.appendChild(articleMaker(data))
+        });
+        response.data.articles['jquery'].forEach(data =>{
+            articleCard.appendChild(articleMaker(data))
+        });
+        response.data.articles['node'].forEach(data =>{
+            articleCard.appendChild(articleMaker(data))
+        });
+        response.data.articles['technology'].forEach(data =>{
+            articleCard.appendChild(articleMaker(data))
+        })
+    });
