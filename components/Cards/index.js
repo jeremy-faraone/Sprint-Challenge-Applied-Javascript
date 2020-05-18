@@ -20,12 +20,12 @@
 // Use your function to create a card for each of the articles and add the card to the DOM.
 
 function articleMaker(artData) {
-    const card = document.createElement("div")
-    const head = document.createElement("div")
-    const author = document.createElement("div")
-    const imgBox = document.createElement("div")
-    const image = document.createElement("img")
-    const name = document.createElement("span");
+    const card = document.createElement('div')
+    const head = document.createElement('div')
+    const author = document.createElement('div')
+    const imgBox = document.createElement('div')
+    const image = document.createElement('img')
+    const name = document.createElement('span');
 
     card.appendChild(head);
     card.appendChild(author);
@@ -33,10 +33,10 @@ function articleMaker(artData) {
     imgBox.appendChild(image);
     author.appendChild(name);
 
-    card.classList.add("card");
-    head.classList.add("headline");
-    author.classList.add("author");
-    imgBox.classList.add("img-container");
+    card.classList.add('card');
+    head.classList.add('headline');
+    author.classList.add('author');
+    imgBox.classList.add('img-container');
 
     head.textContent = artData.headline;
     image.src = artData.authorPhoto;
